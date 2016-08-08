@@ -8,7 +8,9 @@
 
 Firebase is an excellent tool to have in the developer's kit, and while its standard interface is robust, it can be helpful to have some simple abstractions for common patterns, such as fetching data one time, setting and updating records, and performing queries against your database.
 
-Fireface is designed to work with your Node.js server, and is configured using a service account, meaning your API doesn't need any special rules to access your Firebase database.
+Fireface is designed to work with your Node.js server, and is configured using a service account, meaning your API doesn't need any special rules to access your Firebase database. Note that this also means Fireface and read, write, and delete any data, so you'll need to manage your own access control logic on your server.
+
+> Warning: don't use this library in a client-side web application. It's too exploitable.
 
 ## Installation
 
@@ -58,6 +60,7 @@ ff.delete('users/1234').then(() => {
 
 // Get a new unique ID for a ref
 const newUserId = ff.getKey('users');
+// Create a user with the new ID
 ff.post(`users/${newUserId}`, {
   id: newUserId,
   name: 'mary',

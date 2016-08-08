@@ -1,6 +1,6 @@
 {
   "name": "fireface",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A convenient interface for Firebase",
   "main": "index.js",
   "scripts": {
