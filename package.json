@@ -1,0 +1,11 @@
+{
+  "name": "fireface",
+  "version": "0.0.1",
+  "description": "A convenient interface for Firebase",
+  "main": "index.js",
+  "scripts": {
+    "test": ""
+  },
+  "author": "Justin Sisley <justin@vera.com>",
+  "license": "MIT"
+}
