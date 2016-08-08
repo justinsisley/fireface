@@ -29,16 +29,19 @@ Once your project and account are set up, put your credentials JSON into your pr
 ```javascript
 const ff = require('fireface');
 
+// Initialize Fireface/Firebase
 ff.initializeApp({
   serviceAccount: path.join(__dirname, '../config/firebase/credentials.json'),
   databaseURL: 'https://my-firebase-database.firebaseio.com',
 });
 
+// Get a ref
 ff.get('users/1234')
 .then(user => {
   console.log(user);
 });
 
+// Create/update a ref
 ff.post('users/1234', {
   name: 'bob',
   admin: true,
@@ -48,6 +51,7 @@ ff.post('users/1234', {
   console.log('failed to update user 1234', err);
 });
 
+// Delete a ref
 ff.delete('users/1234').then(() => {
   console.log('user 1234 deleted');
 });
@@ -60,6 +64,12 @@ ff.post(`users/${newUserId}`, {
   admin: false,
 }).then(() => {
   console.log('created new user');
+});
+
+// Perform a query on a ref
+ff.find('users', { name: 'mary' })
+.then(result => {
+  console.log('found', result);
 });
 ```
 
