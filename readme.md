@@ -74,6 +74,14 @@ ff.find('users', { name: 'mary' })
 .then(result => {
   console.log('found', result);
 });
+
+// Update multiple refs at one time
+ff.update({
+  'users/1234': { admin: false },
+  `users/${newUserId}`: { admin: true },
+}).then(() => {
+  console.log('updated multiple users');
+});
 ```
 
 ## Versioning
