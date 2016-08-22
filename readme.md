@@ -43,10 +43,20 @@ ff.get('users/1234')
   console.log(user);
 });
 
-// Create/update a ref
+// Create a ref
+// WARNING: this will overwrite the entire ref.
 ff.post('users/1234', {
   name: 'bob',
   admin: true,
+}).then(() => {
+  console.log('user 1234 created');
+}).catch(err => {
+  console.log('failed to create user 1234', err);
+});
+
+// Update a ref
+ff.put('users/1234', {
+  name: 'bobby',
 }).then(() => {
   console.log('user 1234 updated');
 }).catch(err => {

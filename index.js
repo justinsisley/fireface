@@ -60,7 +60,7 @@ const fireface = {
 
   /**
    * Set the value of a specific ref
-   * Similar to a post or put
+   * Similar to a post`
    *
    * @param  {String} ref  The ref. E.g. 'posts/52'
    * @param  {Object} body The new value of the ref
@@ -75,6 +75,28 @@ const fireface = {
     return new Promise((resolve, reject) => {
       this.getRef(ref)
       .set(body)
+      .then(resolve)
+      .catch(reject);
+    });
+  },
+
+  /**
+   * Update the value of a specific ref
+   * Similar to a put
+   *
+   * @param  {String} ref  The ref. E.g. 'posts/52'
+   * @param  {Object} body The new value of the ref
+   * @return {Promise}     A promise
+   *
+   * Example:
+   * put('users/12345', { year: '1952', make: 'human' }).then(...)
+   */
+  put(ref, body) {
+    this.validateInitialization();
+
+    return new Promise((resolve, reject) => {
+      this.getRef(ref)
+      .update(body)
       .then(resolve)
       .catch(reject);
     });
